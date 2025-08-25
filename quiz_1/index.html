@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leadership Questionnaire</title>
+
+  <!-- Chart.js CDN - Updated to latest version -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="quiz1.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Pre-Quiz Form Section -->
+    <div id="preQuizForm" class="pre-quiz-form">
+      <h1>Participant Information (Optional)</h1>
+      <p>
+        This information helps us understand how leadership styles correlate with different contexts and outcomes. 
+        The data will be used for research purposes only.
+      </p>
+      
+      <div class="toggle-container" style="margin-bottom: 2rem; text-align: center;">
+        <p style="margin-bottom: 1rem; font-weight: 600; color: #4a5568;">Please select one:</p>
+        <div style="display: flex; gap: 2rem; justify-content: center; align-items: center;">
+          <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600; cursor: pointer;">
+            <input type="checkbox" id="professionalCheckbox" name="userType" value="Working_professional" style="width: 18px; height: 18px;">
+            <span>Working Professional</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600; cursor: pointer;">
+            <input type="checkbox" id="studentCheckbox" name="userType" value="student" style="width: 18px; height: 18px;">
+            <span>Student</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-grid" style="display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <!-- Demographics (common) -->
+        <div class="form-section">
+          <h4>Demographics</h4>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="fullName" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Full Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Your full name" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="age" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Age <span style="color:#e53e3e">*</span></label>
+            <input type="number" id="age" name="age" min="15" max="100" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="gender" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Gender <span style="color:#e53e3e">*</span></label>
+            <select id="gender" name="gender" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+              <option value="">Select...</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="non-binary">Non-binary</option>
+              <option value="prefer-not-to-say">Prefer not to say</option>
+              <option value="other">Other</option>
+            </select>
+            <input type="text" id="genderOther" name="genderOther" placeholder="Please specify..." style="display: none; margin-top: 0.5rem; width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="country" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Country <span style="color:#e53e3e">*</span></label>
+            <input type="text" id="country" name="country" placeholder="e.g., India" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Email (Optional)</label>
+            <input type="email" id="email" name="email" placeholder="your.email@example.com" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="phone" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Phone Number (Optional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 123-4567" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+          </div>
+        </div>
+
+        <!-- Common Education Fields -->
+        <div class="form-section">
+          <h4>Education</h4>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="educationLevel" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Education Level <span style="color:#e53e3e">*</span></label>
+            <select id="educationLevel" name="educationLevel" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+              <option value="">Select...</option>
+              <option value="high-school">High School</option>
+              <option value="undergraduate">Undergraduate</option>
+              <option value="postgraduate">Postgraduate</option>
+              <option value="doctoral">Doctoral</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="fieldOfStudy" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Field of Study <span style="color:#e53e3e">*</span></label>
+            <select id="fieldOfStudy" name="fieldOfStudy" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+              <option value="">Select...</option>
+              <option value="engineering">Engineering</option>
+              <option value="business">Business</option>
+              <option value="psychology">Psychology</option>
+              <option value="medicine">Medicine</option>
+              <option value="arts">Arts</option>
+              <option value="science">Science</option>
+              <option value="social-sciences">Social Sciences</option>
+              <option value="law">Law</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="institutionType" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Institution Type <span style="color:#e53e3e">*</span></label>
+            <select id="institutionType" name="institutionType" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+              <option value="">Select...</option>
+              <option value="public">Public</option>
+              <option value="private">Private</option>
+              <option value="international">International</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="leadershipCourses" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Leadership Courses Taken <span style="color:#e53e3e">*</span></label>
+            <select id="leadershipCourses" name="leadershipCourses" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+              <option value="">Select...</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Student-Specific Fields -->
+        <div class="form-section student-section" style="display: none;">
+          <h4>Student Experience</h4>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="howOftenLead" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">How often do you take charge to lead the team?</label>
+            <select id="howOftenLead" name="howOftenLead" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+              <option value="">Select...</option>
+              <option value="never">Never</option>
+              <option value="sometimes">Sometimes</option>
+              <option value="often">Often</option>
+              <option value="always">Always</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="typicalGroupSize" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Typical group size in a project</label>
+            <input type="number" id="typicalGroupSize" name="typicalGroupSize" min="1" max="20" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="groupProjectSuccess" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Group project success</label>
+            <select id="groupProjectSuccess" name="groupProjectSuccess" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+              <option value="">Select...</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+              <option value="excellent">Excellent</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="peerRating" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">How do peers rate your contribution?</label>
+            <select id="peerRating" name="peerRating" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+              <option value="">Select...</option>
+              <option value="below-average">Below Average</option>
+              <option value="average">Average</option>
+              <option value="above-average">Above Average</option>
+              <option value="good">Good</option>
+              <option value="excellent">Excellent</option>
+              <option value="not-sure">Not Sure</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="currentGPA" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Current GPA/Grade (Optional)</label>
+            <input type="text" id="currentGPA" name="currentGPA" placeholder="e.g., 3.5/4.0 or 85%" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+          </div>
+        </div>
+
+        <!-- Professional-Specific Fields -->
+        <div class="form-section professional-section">
+          <h4>Professional Experience</h4>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="currentTeamSize" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Current team size</label>
+            <input type="number" id="currentTeamSize" name="currentTeamSize" min="0" max="1000" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="teamRetentionRate" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Team retention rate</label>
+            <select id="teamRetentionRate" name="teamRetentionRate" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+              <option value="">Select...</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="projectSuccessRate" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Project success rate</label>
+            <select id="projectSuccessRate" name="projectSuccessRate" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+              <option value="">Select...</option>
+              <option value="10%">10%</option>
+              <option value="20%">20%</option>
+              <option value="30%">30%</option>
+              <option value="40%">40%</option>
+              <option value="50%">50%</option>
+              <option value="60%">60%</option>
+              <option value="70%">70%</option>
+              <option value="80%">80%</option>
+              <option value="90%">90%</option>
+              <option value="100%">100%</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="industry" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Industry</label>
+            <select id="industry" name="industry" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+              <option value="">Select...</option>
+              <option value="technology">Technology</option>
+              <option value="healthcare">Healthcare</option>
+              <option value="finance">Finance</option>
+              <option value="education">Education</option>
+              <option value="manufacturing">Manufacturing</option>
+              <option value="retail">Retail</option>
+              <option value="consulting">Consulting</option>
+              <option value="non-profit">Non-profit</option>
+              <option value="government">Government</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="companySize" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Company size</label>
+            <select id="companySize" name="companySize" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+              <option value="">Select...</option>
+              <option value="1-10">1-10</option>
+              <option value="10-20">10-20</option>
+              <option value="20-50">20-50</option>
+              <option value="50-100">50-100</option>
+              <option value="100-250">100-250</option>
+              <option value="250-500">250-500</option>
+              <option value="500-1000">500-1000</option>
+              <option value="1000-2000">1000-2000</option>
+              <option value="2000-5000">2000-5000</option>
+              <option value="5000+">5000+</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="rolePosition" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Your role/position</label>
+            <select id="rolePosition" name="rolePosition" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+              <option value="">Select...</option>
+              <option value="team-lead">Team Lead</option>
+              <option value="supervisor">Supervisor</option>
+              <option value="manager">Manager</option>
+              <option value="senior-manager">Senior Manager</option>
+              <option value="director">Director</option>
+              <option value="vp">VP</option>
+              <option value="c-level">C-Level Executive</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="button-group" style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+        <button type="button" id="submitPreQuiz" style="max-width: 200px; margin: 0;">Submit and Start Quiz</button>
+        <button type="button" id="skipPreQuiz" style="max-width: 200px; margin: 0; background: linear-gradient(135deg, #718096 0%, #4a5568 100%);">Skip to Quiz</button>
+      </div>
+    </div>
+
+    <!-- Existing Quiz Content -->
+    <div id="quizContent" style="display: none;">
+      <div id="backToPreQuiz" style="text-align: right; margin-bottom: 1rem;">
+        <button type="button" id="backToPreQuizBtn" style="max-width: 200px; margin: 0; background: linear-gradient(135deg, #718096 0%, #4a5568 100%);">← Back to Pre-Quiz</button>
+      </div>
+      
+      <h1>Conceptualizing Leadership Questionnaire : Chapter 1</h1>
+      <p>
+        <strong>Purpose:</strong> To identify how you view leadership and to explore your
+        perceptions of different aspects of leadership.
+      </p>
+      <p>
+        <strong>Instructions:</strong> Using the scale below, indicate the extent to which you
+        agree or disagree with the following statements about leadership.
+      </p>
+      <p>
+        <strong>Key:</strong> 1 = Strongly disagree | 2 = Disagree | 3 = Neutral | 4 = Agree | 5 = Strongly agree
+      </p>
+
+      <form id="leadershipForm">
+        <div id="questions"></div>
+        <button type="button" onclick="calculateScores()">Submit</button>
+      </form>
+
+      <div class="result" id="results" style="display: none;">
+        <h2>Your Leadership Dimension Scores</h2>
+        <div id="scores"></div>
+
+        <div class="chart-container">
+          <canvas id="radarChart"></canvas>
+        </div>
+
+        <!-- Modal Structure - keeping for potential future use -->
+        <div id="chartModal" class="modal">
+          <div class="modal-overlay"></div>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>Leadership Dimensions Radar Chart</h3>
+              <button type="button" class="modal-close" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div class="modal-chart-container">
+                <canvas id="modalRadarChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="interpretation"
+          style="
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+          "
+        >
+          <h3>What Your Scores Mean</h3>
+          <p>
+            Your scores show how you view and define leadership. The way you think
+            about leadership affects how you practice it.
+          </p>
+
+          <div
+            id="highest-score"
+            style="
+              margin: 15px 0;
+              padding: 10px;
+              background-color: #e8f5e8;
+              border-left: 4px solid #28a745;
+            "
+          ></div>
+
+          <h4>Quick Guide to Each Leadership Dimension:</h4>
+          <ul style="line-height: 1.6;">
+            <li>
+              <strong>Trait:</strong> Leadership comes from special personality traits
+              and natural gifts
+            </li>
+            <li>
+              <strong>Ability:</strong> Leadership is a learned skill that can be
+              developed over time
+            </li>
+            <li>
+              <strong>Skill:</strong> Leadership requires specific knowledge,
+              competence, and know-how
+            </li>
+            <li>
+              <strong>Behavior:</strong> Leadership is about what people do and how
+              they act
+            </li>
+            <li>
+              <strong>Relationship:</strong> Leadership focuses on communication
+              between leaders and followers
+            </li>
+            <li>
+              <strong>Process:</strong> Leadership involves leaders, followers, and
+              situations working together
+            </li>
+          </ul>
+
+          <p>
+            <em
+              >Compare your scores to see which aspects of leadership matter most to
+              you. Your highest and lowest scores reveal your leadership
+              philosophy!</em
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Link to external JavaScript -->
+  <script src="quiz1.js"></script>
+</body>
+</html>
+    </div>
+  </div>
+
+  <!-- Link to external JavaScript -->
+  <script src="quiz1.js"></script>
+</body>
+</html>
