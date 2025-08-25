@@ -1,0 +1,424 @@
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 1rem;
+  line-height: 1.6;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: #333;
+}
+
+/* Container for main content */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+/* Typography */
+h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: #2d3748;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: #4a5568;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  color: #4a5568;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+p {
+  font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+/* Question styling */
+.question {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 12px;
+  border-left: 5px solid #667eea;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.question:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  border-left-color: #764ba2;
+}
+
+.question label:first-child {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  line-height: 1.6;
+}
+
+/* Radio button groups */
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  justify-content: space-between;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 55px;
+  height: 55px;
+  min-width: 55px;
+  min-height: 55px;
+  max-width: 55px;
+  max-height: 55px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  flex: 1;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.radio-group label:hover {
+  border-color: #667eea;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.radio-group input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio-group input[type="radio"]:checked + span {
+  color: white;
+}
+
+.radio-group label:has(input[type="radio"]:checked) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Fallback for browsers that don't support :has() */
+.radio-group input[type="radio"]:checked + span {
+  color: white;
+}
+
+.radio-group label.checked {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Button styling */
+button {
+  width: 100%;
+  max-width: 300px;
+  margin: 2rem auto 0;
+  padding: 1rem 2rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+  min-height: 48px;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Results section */
+.result {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 15px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.score-line {
+  margin: 1rem 0;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+  border-left: 5px solid #48bb78;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.score-line:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Charts section styling */
+.charts-container {
+  margin: 2rem auto;
+  background: white;
+  border-radius: 15px;
+  border: 2px solid #e2e8f0;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.chart-tabs {
+  display: flex;
+  overflow-x: auto;
+  background: #f7fafc;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.chart-tab {
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: auto;
+  box-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  max-width: none;
+}
+
+.chart-tab:hover {
+  background: #edf2f7;
+  transform: none;
+  box-shadow: none;
+}
+
+.chart-tab.active {
+  border-bottom-color: #667eea;
+  color: #2d3748;
+  background: white;
+}
+
+.chart-views {
+  position: relative;
+}
+
+.chart-view {
+  display: none;
+  padding: 2rem;
+}
+
+.chart-view.active {
+  display: block;
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 15px;
+  border: 1px solid #e2e8f0;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  aspect-ratio: 4/3;
+  position: relative;
+}
+
+/* Chart legends */
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+/* Scoring scale styling */
+.scoring-scale {
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 15px;
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+}
+
+.scoring-scale h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #2d3748;
+}
+
+.scale-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.scale-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 10px;
+  background: #f7fafc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.scale-item:hover {
+  transform: translateY(-2px);
+}
+
+.scale-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.scale-color.high {
+  background: #48bb78; /* Green for high range */
+}
+
+.scale-color.moderate {
+  background: #ecc94b; /* Yellow for moderate range */
+}
+
+.scale-color.low {
+  background: #f56565; /* Red for low range */
+}
+
+.scale-item p {
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+}
+
+/* Interpretation section */
+#interpretation {
+  font-size: clamp(1.1rem, 2.5vw, 1.25rem) !important;
+  line-height: 1.7 !important;
+}
+
+#interpretation p {
+  font-size: clamp(1.1rem, 2.5vw, 1.25rem) !important;
+}
+
+#interpretation li {
+  font-size: clamp(1.05rem, 2.3vw, 1.2rem) !important;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  .chart-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  
+  .chart-tab {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+  
+  .chart-container {
+    padding: 1rem;
+  }
+  
+  .scale-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .scale-item {
+    width: 100%;
+    max-width: 280px;
+  }
+}
