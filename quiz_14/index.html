@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gender-Leader Bias Questionnaire - Chapter 14</title>
+    <link rel="stylesheet" href="quiz14.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Leadership Styles</h1>
+        <h2>Chapter 14: Gender-Leader Bias Questionnaire</h2>
+
+        <form id="genderBiasForm">
+            <div class="intro">
+                <p><strong>Purpose:</strong> The purpose of this questionnaire is to learn about gender biases and how to become aware of them in order to break harmful stereotypes.</p>
+                <p><strong>What you're rating:</strong> You will rate how important different personality characteristics are for effective leadership in general. You are NOT rating specific leaders or gender groups - just the importance of each trait for leadership.</p>
+                <p><strong>Instructions:</strong> Below are characteristics that people might have. For each characteristic, indicate how important you think it is for someone to be an effective leader.</p>
+                <p><strong>Key:</strong> 1 = Not Important | 2 = Somewhat Important | 3 = Neutral | 4 = Important | 5 = Very Important</p>
+            </div>
+            <div id="questions"></div>
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+                <button type="button" id="randomFillBtn">Random Fill</button>
+                <button type="submit">Calculate Results</button>
+            </div>
+        </form>
+
+        <div class="result" style="display: none;">
+            <div class="scoring-scale">
+                <h3>Understanding Your Results</h3>
+                <div class="scale-container">
+                    <div class="scale-item">
+                        <div class="scale-color strong"></div>
+                        <p><strong>Strong Value (33-40):</strong> You highly value these characteristics for leadership</p>
+                    </div>
+                    <div class="scale-item">
+                        <div class="scale-color neutral"></div>
+                        <p><strong>Neutral Association (25-32):</strong> You have a moderate view of these characteristics</p>
+                    </div>
+                    <div class="scale-item">
+                        <div class="scale-color weak"></div>
+                        <p><strong>Weak Value (8-24):</strong> You place less importance on these characteristics for leadership</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Your Gender-Leader Bias Results</h3>
+            <p>Here are your results showing how you value different types of leadership characteristics.</p>
+            <div id="score-breakdown"></div>
+
+            <div class="charts-container">
+                <div class="chart-container">
+                    <canvas id="resultChart"></canvas>
+                </div>
+            </div>
+
+            <div class="interpretation">
+                <h3>What This Means</h3>
+                <p><strong>About the characteristics:</strong></p>
+                <ul>
+                    <li><strong>Communal characteristics</strong> (like caring, supportive, understanding) are traditionally associated with women</li>
+                    <li><strong>Agentic characteristics</strong> (like dominant, assertive, controlling) are traditionally associated with men</li>
+                </ul>
+                <p>Many people are surprised to find they unconsciously favor traditional "male" leadership traits over "female" ones, even when this conflicts with their stated values. This test reveals unconscious biases that can disadvantage women in leadership roles.</p>
+                <p>Understanding these biases is the first step toward creating more inclusive leadership environments that value diverse leadership styles.</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="quiz14.js"></script>
+</body>
+</html>
